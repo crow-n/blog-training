@@ -1,0 +1,26 @@
+{
+  "name": "blog-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crow-n/blog-training.git"
+  },
+  "author": "crow-n",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crow-n/blog-training/issues"
+  },
+  "homepage": "https://github.com/crow-n/blog-training#readme",
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4",
+    "pug": "^2.0.3"
+  }
+}
