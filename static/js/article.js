@@ -30,7 +30,7 @@ layui.use(['layedit', 'layer', 'element'], function(){
         time: 1000,
         end(){
           if(data.status === 1){
-            // 评论成功就承载页面
+            // 评论成功就重载页面
             window.location.reload()
           }
         }

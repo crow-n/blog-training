@@ -8,6 +8,8 @@ mongoose.Promise = global.Promise
 
 //把 mongoose 的 schema 取出来
 const Schema = mongoose.Schema
+// 取出 ObjectId
+const ObjectId = Schema.Types.ObjectId
 
 db.on('error', () => {
     console.log('连接数据库失败')
@@ -19,5 +21,6 @@ db.on('open', () => {
 
 module.exports = {
     db,
-    Schema
+    Schema,
+    ObjectId
 }

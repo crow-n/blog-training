@@ -40,3 +40,8 @@ app.use(router.routes()).use(router.allowedMethods())
 app.listen(3000, () => {
     console.log('项目启动成功,监听在3000端口')
 })
+
+{
+    const user = require('./control/user')
+    user.detectAdmin()
+}

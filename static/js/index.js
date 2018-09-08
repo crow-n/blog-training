@@ -15,8 +15,9 @@ layui.use(["element", "laypage"], () => {
     curr: location.pathname.replace("/page/", ""),
     jump(obj, f){
       $("#laypage a").each((i, v) => {
-        let pageValue = `/page/${$(v).data("page")}`
-        v.href = pageValue
+        const $v = $(v)
+        if($v.hasClass('layui-disabled')) return
+        v.href = `/page/${$v.data("page")}`
       })
     }
   })

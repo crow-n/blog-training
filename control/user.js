@@ -2,6 +2,33 @@ const User = require('../model/user')
 
 const encrypt = require('../util/encrypt')
 
+// 检测 创建 超级管理员
+exports.detectAdmin = () => {
+    User
+      .find({username: 'admin'})
+      .then(data => {
+        if(data.length === 0) {
+            new User({
+                username: 'admin',
+                password: encrypt('admin'),
+                role: 666
+            }).save((err, data) => {
+                if(err) return console.log(err)
+                console.log('创建超级管理员成功')
+            })
+        } else {
+            console.log('超级管理员已存在 用户名:admin 密码:admin')
+        }
+    })
+}
+
+// 用户注册、登录页面显示
+exports.user = async ctx => {
+    // show 为 true 则显示注册   false 显示登录
+    const show = /reg$/.test(ctx.path)
+    await ctx.render('register', {show})
+}
+
 // 用户注册
 exports.reg = async ctx => {
     // 用户注册时 post 发过来的数据
@@ -70,7 +97,9 @@ exports.login = async ctx => {
             // 保存用户session
             ctx.session = {
                 username,
-                uid: data[0]._id
+                uid: data[0]._id,
+                avatar: data[0].avatar,
+                role: data[0].role
             }
         }
         await ctx.render('isOk', { status })

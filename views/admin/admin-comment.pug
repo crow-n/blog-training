@@ -1,7 +1,7 @@
 extends ./admin
 
 block main
-  table(lay-data="{ url:'/user/comments', page:true, id:'idTest'}", lay-filter="demo").layui-table
+  table(lay-data="{ url:'/admin/comment/list', page:true, id:'idTest'}", lay-filter="demo").layui-table
     thead
       tr
         th(lay-data="{field:'article', align:'center', templet: res => res.article.title}") 被评文章
@@ -30,10 +30,11 @@ block main
 
         layer.confirm("确认删除？", () => {
           $.ajax({
-            method: "delete",
-            url: "/comment/" + commentId,
+            method: "post",
+            url: "/admin/comment/del",
             data: {
               // 发送文章id值，减少后台查询
+              commentId,
               articleId
             },
             success(res){

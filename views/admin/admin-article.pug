@@ -1,7 +1,7 @@
 extends ./admin
 
 block main
-  table(lay-data="{width: 892, url:'/user/articles', page:true, id:'idTest'}", lay-filter="demo").layui-table
+  table(lay-data="{width: 892, url:'/admin/article/list', page:true, id:'idTest'}", lay-filter="demo").layui-table
     thead
       tr
         th(lay-data="{field:'title', align:'center'}") 文章
@@ -26,8 +26,8 @@ block main
 
         layer.confirm("确认删除？", () => {
           $.ajax({
-            method: "delete",
-            url: "/article/" + _id,
+            method: "post",
+            url: "/admin/article/del",
             data: {
               _id
             },
